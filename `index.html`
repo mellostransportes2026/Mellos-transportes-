@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mello's Transportes | Mudanças e Transportes no Rio de Janeiro</title>
+<meta name="description" content="Mudanças residenciais, comerciais e interestaduais no Rio de Janeiro. Mais de 16 anos de experiência, +2.500 mudanças realizadas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#0b1626;
+    --navy-900:#101f36;
+    --navy-800:#16294a;
+    --orange-500:#f5821f;
+    --orange-600:#e06a10;
+    --paper:#f5f3ee;
+    --ink:#0b1626;
+    --muted:#8fa2c0;
+    --line: rgba(255,255,255,0.09);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif; background:var(--paper); color:var(--ink); line-height:1.5;}
+  h1,h2,h3,h4{font-family:'Manrope',sans-serif; letter-spacing:-0.01em;}
+  a{color:inherit; text-decoration:none;}
+  .container{max-width:1160px; margin:0 auto; padding:0 24px;}
+  .eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:0.72rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--orange-500);}
+  .eyebrow::before{content:""; width:18px; height:2px; background:var(--orange-500); display:inline-block;}
+  .btn{display:inline-flex; align-items:center; gap:10px; padding:14px 26px; border-radius:999px; font-weight:700; font-size:0.95rem; border:1.5px solid transparent; cursor:pointer; transition:transform .15s ease, background .2s ease;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--orange-500); color:#fff;}
+  .btn-primary:hover{background:var(--orange-600);}
+
+  header{position:sticky; top:0; z-index:50; background:rgba(11,22,38,0.95); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 24px; color:#fff;}
+  .brand{display:flex; align-items:center; gap:10px; font-weight:800; font-size:1.15rem;}
+  .brand-mark{width:38px; height:38px; border-radius:9px; background:var(--orange-500); display:flex; align-items:center; justify-content:center; font-size:1.2rem; box-shadow:0 4px 14px rgba(245,130,31,0.35);}
+  .brand small{display:block; font-weight:600; font-size:0.6rem; letter-spacing:0.12em; color:var(--orange-500);}
+  nav.links{display:flex; gap:28px; font-size:0.92rem; font-weight:600; color:#cfd9ec;}
+  nav.links a:hover{color:#fff;}
+  .nav-actions{display:flex; align-items:center; gap:14px;}
+  .phone-pill{display:flex; align-items:center; gap:8px; font-size:0.85rem; color:#cfd9ec; font-weight:600;}
+  .menu-toggle{display:none; background:none; border:none; color:#fff; font-size:1.6rem; cursor:pointer; padding:4px;}
+
+  .mobile-menu{position:fixed; inset:0; background:var(--navy-950); z-index:100; display:flex; flex-direction:column; padding:24px; transform:translateX(100%); transition:transform .25s ease;}
+  .mobile-menu.open{transform:translateX(0);}
+  .mobile-menu-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:40px;}
+  .mobile-menu-close{background:none; border:none; color:#fff; font-size:1.8rem; cursor:pointer;}
+  .mobile-menu a{color:#fff; font-size:1.3rem; font-weight:700; padding:16px 0; border-bottom:1px solid var(--line);}
+  .mobile-menu .btn{margin-top:24px; justify-content:center;}
+
+  @media (max-width:880px){ nav.links, .phone-pill{display:none;} .menu-toggle{display:block;} }
+
+  section{padding:84px 0;}
+  .section-head{max-width:620px; margin-bottom:44px;}
+  .section-head h2{font-size:clamp(1.6rem,3vw,2.15rem); margin-top:12px; font-weight:800;}
+  .section-head p{color:#5a6579; margin-top:12px; font-size:1.02rem;}
+
+  .hero{background:radial-gradient(circle at 82% 0%, #1a3560 0%, var(--navy-950) 55%); color:#fff; padding:76px 0 90px; position:relative; overflow:hidden;}
+  .hero::after{content:""; position:absolute; right:-120px; bottom:-160px; width:460px; height:460px; border-radius:50%; background:radial-gradient(circle, rgba(245,130,31,0.28), transparent 70%);}
+  .hero-grid{display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center; position:relative; z-index:2;}
+  .hero h1{font-size:clamp(2.1rem, 4vw, 3.1rem); font-weight:800; line-height:1.08; margin:18px 0 20px;}
+  .hero h1 span{color:var(--orange-500);}
+  .hero p{color:#b9c6dd; font-size:1.05rem; max-width:520px; margin-bottom:30px;}
+  .rating-strip{display:flex; align-items:center; gap:12px; color:#cfd9ec; font-size:0.9rem;}
+  .stars{color:var(--orange-500); font-size:1rem; letter-spacing:2px;}
+  .badges{display:flex; gap:10px; flex-wrap:wrap; margin-top:22px;}
+  .badge{font-size:0.75rem; font-weight:600; padding:7px 13px; border-radius:999px; background:rgba(255,255,255,0.06); border:1px solid var(--line); color:#cfd9ec;}
+  .hero-panel{background:var(--navy-900); border:1px solid var(--line); border-radius:22px; padding:28px; box-shadow:0 30px 60px rgba(0,0,0,0.35);}
+  .hero-panel h3{font-size:1rem; color:#fff; margin-bottom:18px;}
+  .stat-row{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  .stat{border-top:1px solid var(--line); padding-top:14px;}
+  .stat b{display:block; font-size:1.7rem; color:var(--orange-500); font-family:'Manrope',sans-serif;}
+  .stat span{font-size:0.8rem; color:var(--muted);}
+
+  .services{background:#fff;}
+  .service-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .service-card{border:1px solid #e7e2d8; border-radius:18px; padding:28px; background:var(--paper); transition:border-color .2s ease, transform .2s ease;}
+  .service-card:hover{border-color:var(--orange-500); transform:translateY(-4px);}
+  .service-icon{width:46px; height:46px; border-radius:12px; background:var(--navy-900); color:var(--orange-500); display:flex; align-items:center; justify-content:center; font-size:1.3rem; margin-bottom:16px;}
+  .service-card h3{font-size:1.08rem; margin-bottom:8px;}
+  .service-card p{font-size:0.92rem; color:#5a6579;}
+
+  .about{background:var(--navy-950); color:#fff;}
+  .about-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:start;}
+  .about p{color:#b9c6dd; margin-bottom:16px; font-size:1rem;}
+  .value-list{display:flex; flex-direction:column; gap:18px; margin-top:8px;}
+  .value{border-left:2px solid var(--orange-500); padding-left:16px;}
+  .value h4{font-size:0.98rem; margin-bottom:4px;}
+  .value p{color:#9fb0cc; font-size:0.9rem; margin:0;}
+  .commit-badges{display:flex; gap:10px; flex-wrap:wrap; margin-top:24px;}
+
+  .fleet{background:#fff;}
+  .fleet-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; text-align:center;}
+  .fleet-item{border:1px solid #e7e2d8; border-radius:16px; padding:26px 14px;}
+  .fleet-item .n{font-family:'Manrope',sans-serif; font-weight:800; font-size:1.8rem; color:var(--navy-900);}
+  .fleet-item span{font-size:0.85rem; color:#5a6579;}
+
+  .testimonials{background:var(--paper);}
+  .rating-summary{display:flex; align-items:center; gap:16px; margin-bottom:36px;}
+  .rating-summary .n{font-size:2.6rem; font-weight:800; font-family:'Manrope',sans-serif;}
+  .test-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .test-card{background:#fff; border:1px solid #e7e2d8; border-radius:16px; padding:26px;}
+  .test-card .stars{margin-bottom:12px;}
+  .test-card p{font-size:0.94rem; color:#333; margin-bottom:14px;}
+  .test-card .who{font-size:0.85rem; font-weight:700; color:var(--navy-900);}
+  .test-card .who span{display:block; font-weight:500; color:#8a93a3; font-size:0.78rem;}
+
+  .contact{background:var(--navy-900); color:#fff;}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px;}
+  .info-line{display:flex; gap:14px; padding:16px 0; border-bottom:1px solid var(--line);}
+  .info-line .k{width:20px; color:var(--orange-500); font-size:1.1rem;}
+  .info-line div b{display:block; font-size:0.95rem;}
+  .info-line div span{font-size:0.85rem; color:var(--muted);}
+  .contact-card{background:var(--navy-800); border-radius:18px; padding:28px; display:flex; flex-direction:column; gap:16px;}
+  .contact-card h3{font-size:1.1rem;}
+  .contact-card p{color:var(--muted); font-size:0.92rem;}
+  .map-frame{border-radius:16px; overflow:hidden; border:1px solid var(--line); height:260px;}
+  .map-frame iframe{width:100%; height:100%; border:0;}
+
+  footer{background:var(--navy-950); color:#8a97b3; padding:40px 0 24px; font-size:0.85rem;}
+  .footer-grid{display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; padding-bottom:24px; border-bottom:1px solid var(--line);}
+  .footer-bottom{padding-top:20px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+  .wa-float{position:fixed; bottom:24px; right:24px; background:var(--orange-500); color:#fff; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.5rem; box-shadow:0 10px 30px rgba(245,130,31,0.4); z-index:60;}
+
+  @media (max-width:880px){ .hero-grid, .about-grid, .contact-grid{grid-template-columns:1fr;} .service-grid{grid-template-columns:1fr 1fr;} .fleet-grid{grid-template-columns:1fr 1fr;} .test-grid{grid-template-columns:1fr;} }
+  @media (max-width:560px){ .service-grid, .fleet-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav container">
+    <div class="brand">
+      <div class="brand-mark">🚚</div>
+      <div>MELLO'S<small>TRANSPORTES</small></div>
+    </div>
+    <nav class="links">
+      <a href="#inicio">Início</a>
+      <a href="#sobre">Sobre Nós</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#frota">Frota</a>
+      <a href="#avaliacoes">Avaliações</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <div class="nav-actions">
+      <div class="phone-pill">📞 (21) 96989-1491</div>
+      <button class="menu-toggle" onclick="toggleMenu(true)" aria-label="Abrir menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-top">
+    <div class="brand" style="color:#fff;">
+      <div class="brand-mark">🚚</div>
+      <div>MELLO'S<small>TRANSPORTES</small></div>
+    </div>
+    <button class="mobile-menu-close" onclick="toggleMenu(false)" aria-label="Fechar menu">✕</button>
+  </div>
+  <a href="#inicio" class="menu-link">Início</a>
+  <a href="#sobre" class="menu-link">Sobre Nós</a>
+  <a href="#servicos" class="menu-link">Serviços</a>
+  <a href="#frota" class="menu-link">Frota</a>
+  <a href="#avaliacoes" class="menu-link">Avaliações</a>
+  <a href="#contato" class="menu-link">Contato</a>
+  <a class="btn btn-primary" href="https://wa.me/5521969891491" target="_blank">💬 Fale pelo WhatsApp</a>
+</div>
+
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">Desde 2010 no Rio de Janeiro</span>
+      <h1>Mudanças e transportes com <span>segurança, cuidado</span> e o melhor preço.</h1>
+      <p>Há mais de 16 anos oferecendo serviços de mudanças residenciais, comerciais e interestaduais com pontualidade e o melhor atendimento do Rio de Janeiro.</p>
+      <div class="rating-strip">
+        <span class="stars">★★★★★</span>
+        <span><b style="color:#fff">4,8</b> de avaliação — 168 avaliações no Google</span>
+      </div>
+      <div class="badges">
+        <span class="badge">🏳️‍🌈 Empresa que acolhe a comunidade LGBTQ+</span>
+        <span class="badge">💜 Empresa liderada por mulheres</span>
+        <span class="badge">♿ Acessível para cadeirantes</span>
+      </div>
+    </div>
+    <div class="hero-panel">
+      <h3>Mello's Transportes em números</h3>
+      <div class="stat-row">
+        <div class="stat"><b>16+</b><span>Anos de experiência</span></div>
+        <div class="stat"><b>2.500+</b><span>Mudanças realizadas</span></div>
+        <div class="stat"><b>1.800+</b><span>Clientes satisfeitos</span></div>
+        <div class="stat"><b>Todo o Brasil</b><span>Área de atendimento</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="servicos">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Nossos serviços</span>
+      <h2>Soluções completas para sua mudança</h2>
+      <p>Da embalagem ao transporte, cuidamos de cada detalhe para que sua mudança seja tranquila do início ao fim.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card"><div class="service-icon">🏠</div><h3>Mudanças Residenciais</h3><p>Cuidamos de todos os detalhes para sua mudança residencial ser tranquila e segura.</p></div>
+      <div class="service-card"><div class="service-icon">🏢</div><h3>Mudanças Comerciais</h3><p>Transporte ágil e seguro para sua empresa, escritório ou loja, com o mínimo de interrupção.</p></div>
+      <div class="service-card"><div class="service-icon">🗺️</div><h3>Mudanças Interestaduais</h3><p>Levamos seus bens para qualquer lugar do Brasil com segurança e pontualidade.</p></div>
+      <div class="service-card"><div class="service-icon">📦</div><h3>Embalagem e Proteção</h3><p>Materiais de qualidade e técnicas especiais para proteger móveis e itens frágeis.</p></div>
+      <div class="service-card"><div class="service-icon">🔧</div><h3>Montagem e Desmontagem</h3><p>Desmontamos e montamos seus móveis com cuidado e eficiência.</p></div>
+      <div class="service-card"><div class="service-icon">🪜</div><h3>Acesso por Escada</h3><p>Equipe preparada para mudanças em imóveis sem elevador.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="sobre">
+  <div class="container about-grid">
+    <div>
+      <span class="eyebrow">Sobre a empresa</span>
+      <h2 style="margin-top:12px; font-size:2rem; color:#fff;">Tradição, cuidado e compromisso desde 2010</h2>
+      <p>Somos uma empresa criada em 2010, especializada em oferecer o melhor serviço de mudanças e transportes do Rio de Janeiro, com qualidade, segurança e preço justo.</p>
+      <p>Ao longo de mais de 16 anos, já realizamos milhares de mudanças residenciais, comerciais e interestaduais, sempre com o compromisso de superar as expectativas dos nossos clientes.</p>
+      <div class="commit-badges">
+        <span class="badge">🏳️‍🌈 Acolhemos a comunidade LGBTQ+</span>
+        <span class="badge">💜 Empresa de mulheres empreendedoras</span>
+      </div>
+    </div>
+    <div class="value-list">
+      <div class="value"><h4>Missão</h4><p>Oferecer serviços de mudança com qualidade, segurança e eficiência, cuidando de cada bem como se fosse nosso.</p></div>
+      <div class="value"><h4>Visão</h4><p>Ser referência em mudanças e transportes no Brasil, reconhecida pela confiança de quem já foi nosso cliente.</p></div>
+      <div class="value"><h4>Valores</h4><p>Compromisso, respeito, pontualidade, transparência e cuidado em cada etapa do trabalho.</p></div>
+      <div class="value"><h4>Equipe especializada</h4><p>Profissionais treinados e uma frota moderna, equipada para garantir a segurança dos seus bens em qualquer trajeto.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="fleet" id="frota">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Nossa estrutura</span>
+      <h2>Frota e equipe preparadas para qualquer mudança</h2>
+    </div>
+    <div class="fleet-grid">
+      <div class="fleet-item"><div class="n">16+</div><span>Anos de experiência</span></div>
+      <div class="fleet-item"><div class="n">2.500+</div><span>Mudanças realizadas</span></div>
+      <div class="fleet-item"><div class="n">1.800+</div><span>Clientes satisfeitos</span></div>
+      <div class="fleet-item"><div class="n">4,8★</div><span>168 avaliações no Google</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="avaliacoes">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Avaliações</span>
+      <h2>O que dizem sobre a Mello's Transportes</h2>
+    </div>
+    <div class="rating-summary">
+      <span class="n">4,8</span>
+      <div><div class="stars">★★★★★</div><span style="color:#5a6579; font-size:0.9rem;">Baseado em 168 avaliações no Google</span></div>
+    </div>
+    <div class="test-grid">
+      <div class="test-card"><div class="stars">★★★★★</div><p>Cliente contratou o serviço para mudar o filho do Rio para Teresópolis e, depois de indicar a empresa para a família, também fechou outra mudança do Engenho de Dentro para a Tijuca. Recomenda o trabalho.</p><div class="who">Dayse Bruni<span>Avaliação no Google · há 1 mês</span></div></div>
+      <div class="test-card"><div class="stars">★★★★★</div><p>Destaca o excelente trabalho da equipe, descrevendo o serviço como organizado e profissional do início ao fim da mudança.</p><div class="who">Juliana Monteiro<span>Avaliação no Google · há 1 ano</span></div></div>
+      <div class="test-card"><div class="stars">★★★★★</div><p>Mudança residencial concluída sem danos aos móveis, com equipe pontual e cuidadosa durante toda a embalagem e o transporte.</p><div class="who">Cliente Google<span>Avaliação verificada</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contato">
+  <div class="container contact-grid">
+    <div>
+      <span class="eyebrow">Contato</span>
+      <h2 style="margin-top:12px; font-size:2rem;">Fale conosco</h2>
+      <div class="info-line"><div class="k">📍</div><div><b>Endereço</b><span>Rua Luis Câmara, 393 - Ramos, Rio de Janeiro - RJ, 21031-260</span></div></div>
+      <div class="info-line"><div class="k">📞</div><div><b>Telefone / WhatsApp</b><span>(21) 96989-1491</span></div></div>
+      <div class="info-line"><div class="k">✉️</div><div><b>E-mail</b><span>mellos.transportes@gmail.com</span></div></div>
+      <div class="info-line"><div class="k">🌐</div><div><b>Site</b><span>mellostransportes.com.br</span></div></div>
+      <div class="info-line" style="border-bottom:none;"><div class="k">🕒</div><div><b>Horário de atendimento</b><span>Segunda a sábado, das 09h às 18h</span></div></div>
+    </div>
+    <div class="contact-card">
+      <h3>Fale direto pelo WhatsApp</h3>
+      <p>O jeito mais rápido de tirar dúvidas ou pedir informações sobre nossos serviços.</p>
+      <a class="btn btn-primary" href="https://wa.me/5521969891491" target="_blank">💬 Abrir WhatsApp</a>
+      <div class="map-frame">
+        <iframe src="https://www.google.com/maps?q=Rua+Luis+C%C3%A2mara,+393+-+Ramos,+Rio+de+Janeiro+-+RJ,+21031-260&output=embed" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="color:#fff; margin-bottom:10px;">
+          <div class="brand-mark" style="width:32px;height:32px;font-size:1rem;">🚚</div>
+          MELLO'S TRANSPORTES
+        </div>
+        <p style="max-width:260px;">Tradição, cuidado e compromisso desde 2010! Mudanças e transportes com qualidade e segurança em todo o Rio de Janeiro e Brasil.</p>
+      </div>
+      <div>
+        <b style="color:#fff;">Links Rápidos</b><br><br>
+        <a href="#inicio">Início</a><br><br>
+        <a href="#sobre">Sobre Nós</a><br><br>
+        <a href="#servicos">Serviços</a><br><br>
+        <a href="#contato">Contato</a>
+      </div>
+      <div>
+        <b style="color:#fff;">Contato</b><br><br>
+        (21) 96989-1491<br><br>
+        mellos.transportes@gmail.com<br><br>
+        Rua Luis Câmara, 393 - Ramos, RJ
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Mello's Transportes. Todos os direitos reservados.</span>
+      <span>Site institucional — informações da empresa</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5521969891491" target="_blank" aria-label="Falar no WhatsApp">💬</a>
+
+<script>
+function toggleMenu(open){
+  document.getElementById('mobile-menu').classList.toggle('open', open);
+}
+document.querySelectorAll('.menu-link').forEach(function(link){
+  link.addEventListener('click', function(e){
+    e.preventDefault();
+    var targetId = link.getAttribute('href');
+    toggleMenu(false);
+    setTimeout(function(){
+      var target = document.querySelector(targetId);
+      if(target){ target.scrollIntoView({behavior:'smooth'}); }
+    }, 300);
+  });
+});
+</script>
+</body>
+</html>
